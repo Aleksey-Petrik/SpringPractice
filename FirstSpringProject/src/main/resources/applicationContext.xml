@@ -11,6 +11,9 @@
         bean - это просто объект который создается и управляется Spring Container
     -->
 
+    <context:property-placeholder location="classpath:myApp.properties"/> <!-- указываем файл в котором будут хранится значения для бинов -->
+
+    <!-- IoC -->
     <bean id="myPet"
           class="spring_introduction.Dog">
     </bean>
@@ -22,6 +25,13 @@
 
     <bean id="myPersonSet"
           class="spring_introduction.Person">
-        <property name="pet" ref="myPet"/> <!-- создание зависимости через set, ref ссылка на объект -->
+        <property name="pet" ref="myPet"/> <!-- DI создание зависимости через set, ref ссылка на объект -->
+
+        <!-- hardcode -->
+        <!-- <property name="surname" value="Alex"/>  вносим обычное значение через сеттер -->
+        <!-- <property name="age" value="33"/>  вносим обычное значение через сеттер -->
+
+        <property name="surname" value="${person.surname}"/> <!-- вносим обычное значение через сеттер считывая из properties файла -->
+        <property name="age" value="${person.age}"/> <!-- вносим обычное значение через сеттер считывая из properties файла -->
     </bean>
 </beans>
