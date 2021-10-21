@@ -1,10 +1,15 @@
 package spring_introduction;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("personBean")
 public class Person {
     private Pet pet;
     private String surname;
     private int age;
 
+    @Autowired//автоматическое внедрение зависимостей, если есть входные параметры для бинов, применять можно и для сеттеров
     public Person(Pet pet) {
         this.pet = pet;
     }

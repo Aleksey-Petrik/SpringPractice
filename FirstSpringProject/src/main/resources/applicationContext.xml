@@ -11,11 +11,19 @@
         bean - это просто объект который создается и управляется Spring Container
     -->
 
-    <context:property-placeholder location="classpath:myApp.properties"/> <!-- указываем файл в котором будут хранится значения для бинов -->
+    <context:property-placeholder
+            location="classpath:myApp.properties"/> <!-- указываем файл в котором будут хранится значения для бинов -->
 
     <!-- IoC -->
+    <!--
+        init-method="init" метод инициализации при создании бина
+        destroy-method="destroy" метод который будет вызван перед уничтожением бина
+        для scope="prototype" метод destroy-method вызываться не будет
+    -->
     <bean id="myPet"
-          class="spring_introduction.Dog">
+          class="spring_introduction.Dog"
+          init-method="init"
+          destroy-method="destroy">
     </bean>
 
     <bean id="myPerson"
@@ -31,7 +39,9 @@
         <!-- <property name="surname" value="Alex"/>  вносим обычное значение через сеттер -->
         <!-- <property name="age" value="33"/>  вносим обычное значение через сеттер -->
 
-        <property name="surname" value="${person.surname}"/> <!-- вносим обычное значение через сеттер считывая из properties файла -->
-        <property name="age" value="${person.age}"/> <!-- вносим обычное значение через сеттер считывая из properties файла -->
+        <property name="surname"
+                  value="${person.surname}"/> <!-- вносим обычное значение через сеттер считывая из properties файла -->
+        <property name="age"
+                  value="${person.age}"/> <!-- вносим обычное значение через сеттер считывая из properties файла -->
     </bean>
 </beans>

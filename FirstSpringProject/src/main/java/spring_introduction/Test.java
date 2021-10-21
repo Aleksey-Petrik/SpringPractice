@@ -11,6 +11,8 @@ public class Test {
         test4();
         test5();
         test6();
+        test7();//annotations
+        test8();//annotations
     }
 
     public static void test() {
@@ -69,6 +71,26 @@ public class Test {
         //Возвращаются разные объекты
         System.out.println(dog);
         System.out.println(dogSecond);
+        context.close();
+    }
+
+    public static void test7() {
+        System.out.println("Test(annotations) - 7");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContextAnnotations.xml");
+        Cat cat = context.getBean("catBean", Cat.class);
+        //Dog dog = context.getBean("dog", Dog.class);
+        cat.say();
+        //dog.say();
+        context.close();
+    }
+
+    public static void test8() {
+        System.out.println("Test(annotations) - 8");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContextAnnotations.xml");
+        //Cat cat = context.getBean("catBean", Cat.class);
+        //Dog dog = context.getBean("dog", Dog.class);
+        Person person = context.getBean("personBean", Person.class);
+        person.callMyPet();
         context.close();
     }
 }
