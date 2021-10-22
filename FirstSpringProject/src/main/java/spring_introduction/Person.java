@@ -1,16 +1,22 @@
 package spring_introduction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("personBean")
 public class Person {
+    @Autowired//автоматическое внедрение зависимостей, если есть входные параметры для бинов, применять можно и для сеттеров и полей класса
+    @Qualifier("dog")//аннотация которая текущий бин использует для вставки зависимости если будут найдено несколько бинов одного типа
     private Pet pet;
+    @Value("${person.surname}")//аннотация для инициализации поля, можно хардкодить, но не нужно
     private String surname;
+    @Value("${person.age}")
     private int age;
 
     @Autowired//автоматическое внедрение зависимостей, если есть входные параметры для бинов, применять можно и для сеттеров
-    public Person(Pet pet) {
+    public Person(@Qualifier("dog") Pet pet) {
         this.pet = pet;
     }
 
@@ -33,6 +39,8 @@ public class Person {
         this.age = age;
     }
 
+    @Autowired//автоматическое внедрение зависимостей, если есть входные параметры для бинов, применять можно и для сеттеров
+    @Qualifier("dog")//аннотация которая текущий бин использует для вставки зависимости если будут найдено несколько бинов одного типа
     public void setPet(Pet pet) {
         this.pet = pet;
     }

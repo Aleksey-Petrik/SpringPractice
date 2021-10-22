@@ -2,7 +2,7 @@ package spring_introduction;
 
 import org.springframework.stereotype.Component;
 
-//@Component//id = Dog->dog
+@Component//id = Dog->dog
 public class Dog implements Pet {
 
     @Override

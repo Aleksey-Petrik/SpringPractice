@@ -91,6 +91,8 @@ public class Test {
         //Dog dog = context.getBean("dog", Dog.class);
         Person person = context.getBean("personBean", Person.class);
         person.callMyPet();
+        System.out.println(person.getSurname());
+        System.out.println(person.getAge());
         context.close();
     }
 }
