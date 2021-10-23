@@ -1,5 +1,6 @@
 package spring_introduction;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
@@ -13,6 +14,8 @@ public class Test {
         test6();
         test7();//annotations
         test8();//annotations
+        test9();//annotations
+        test10();//annotations
     }
 
     public static void test() {
@@ -95,4 +98,26 @@ public class Test {
         System.out.println(person.getAge());
         context.close();
     }
+
+    public static void test9() {
+        System.out.println("Test(annotations Scope) - 9");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContextAnnotationsScope.xml");
+        Cow cow = context.getBean("cow", Cow.class);
+        Cow cowSecond = context.getBean("cow", Cow.class);
+        cow.say();
+        System.out.println(cow);
+        System.out.println(cowSecond);
+        context.close();
+    }
+
+    public static void test10() {
+        System.out.println("Test(annotations Scope) - 10");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
+        Person person = context.getBean("personBean", Person.class);
+        person.callMyPet();
+        System.out.println(person.getSurname());
+        System.out.println(person.getAge());
+        context.close();
+    }
+
 }
