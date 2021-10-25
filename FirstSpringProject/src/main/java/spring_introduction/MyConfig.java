@@ -1,11 +1,11 @@
 package spring_introduction;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.Scope;
-
-@Configuration
+import org.springframework.context.annotation.*;
+/*
+Первый способ описания конфигурации с помощью сканирования пакета
+ */
+@Configuration//говорит о том что данный файл является конфигурацией
+@ComponentScan("spring_introduction")//указывается пакет, который будет просканирован на наличие бинов и аннотаций
 @PropertySource("classpath:myApp.properties")
 public class MyConfig {
 

@@ -16,6 +16,7 @@ public class Test {
         test8();//annotations
         test9();//annotations
         test10();//annotations
+        test11();//annotations
     }
 
     public static void test() {
@@ -117,6 +118,17 @@ public class Test {
         person.callMyPet();
         System.out.println(person.getSurname());
         System.out.println(person.getAge());
+        context.close();
+    }
+
+    public static void test11() {
+        System.out.println("Test(annotations Scope) - 11");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig2.class);
+        Pet bear = context.getBean("bearBean", Bear.class);
+        bear.say();
+
+        PersonHunter personHunter = context.getBean("personHunterBean", PersonHunter.class);
+        personHunter.callMyPet();
         context.close();
     }
 
