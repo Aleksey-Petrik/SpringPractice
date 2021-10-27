@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component("personBean")
 public class Person {
+
     @Autowired//автоматическое внедрение зависимостей, если есть входные параметры для бинов, применять можно и для сеттеров и полей класса
     @Qualifier("dog")//аннотация которая текущий бин использует для вставки зависимости если будут найдено несколько бинов одного типа
     private Pet pet;
@@ -49,4 +50,5 @@ public class Person {
         System.out.println("Hello my pet");
         pet.say();
     }
+
 }

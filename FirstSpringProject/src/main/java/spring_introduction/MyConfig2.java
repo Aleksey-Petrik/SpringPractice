@@ -18,4 +18,5 @@ public class MyConfig2 {
     public PersonHunter personHunterBean() {
         return new PersonHunter(bearBean());
     }
+
 }
