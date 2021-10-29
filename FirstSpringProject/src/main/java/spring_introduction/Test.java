@@ -129,6 +129,8 @@ public class Test {
 
         PersonHunter personHunter = context.getBean("personHunterBean", PersonHunter.class);
         personHunter.callMyPet();
+
+        System.out.println(personHunter.getName() + " " + personHunter.getAge());
         context.close();
     }
 

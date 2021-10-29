@@ -13,7 +13,7 @@ public class Person {
     private Pet pet;
     @Value("${person.surname}")//аннотация для инициализации поля, можно хардкодить, но не нужно
     private String surname;
-    @Value("${person.age}")
+    @Value("${person.age}")//значения для полей будут взяты из файла properties
     private int age;
 
     @Autowired//автоматическое внедрение зависимостей, если есть входные параметры для бинов, применять можно и для сеттеров
