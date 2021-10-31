@@ -10,12 +10,13 @@ public class UniLibrary extends AbstractLibrary {
         System.out.println("Мы берем книгу из UniLibrary");
     }
 
-    public void returnBook(){
-        System.out.println("Мы вернули книгу в UniLibrary");
+    @Override
+    public void getMagazine(Magazine magazine) {
+        System.out.printf("Мы берем журнал %s из SchoolLibrary", magazine.getName());
     }
 
-    public void getMagazine() {
-        System.out.println("Мы берем журнал из UniLibrary");
+    public void returnBook() {
+        System.out.println("Мы вернули книгу в UniLibrary");
     }
 
 }
