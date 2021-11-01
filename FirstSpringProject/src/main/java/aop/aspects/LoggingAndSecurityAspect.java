@@ -2,11 +2,16 @@ package aop.aspects;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect//аннотация которая говорит о том что данный класс является аспектом
-public class LoggingAspect {
+public class LoggingAndSecurityAspect {
+
+    @Pointcut("execution(* get*())")//создание ссылки на advices, для быстрого изменения шаблона advices
+    private void allGetMethods() {//если сделать public, то ссылка будет доступна и для других advices
+    }
 
     //Pointcut - выражения, описывающее где должен применен Advice
     //execution - писываем шаблон метода
@@ -24,11 +29,22 @@ public class LoggingAspect {
     public void beforeReturnBookAdvice() {
         System.out.println("beforeGetBookAdvance : Попытка вернуть книгу");
     }
+
     //Если нужен метод с разными типами параметров, то ставим * getMagazine(*)
     //Если параметров несколько getMagazine(..) .. указывает любое количество параметров
     //getMagazine(String, ..)
     @Before("execution(public void getMagazine(aop.Magazine))")//сли тип не стандартный, то прописывается путь к классу
     public void beforeGetMagazineAdvice() {
         System.out.println("\nbeforeGetMagazineAdvice : Попытка получить журнал");
+    }
+
+    @Before("allGetMethods()")
+    public void beforeGetLoggingAdvice() {
+        System.out.println("beforeGetLoggingAdvice: запись в лог, попытка взять книгу/журнал");
+    }
+
+    @Before("allGetMethods()")
+    public void beforeGetSecurityAdvice() {
+        System.out.println("beforeGetSecurityAdvice: Проверка прав доступа.");
     }
 }
