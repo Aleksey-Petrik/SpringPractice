@@ -9,8 +9,54 @@ import org.springframework.stereotype.Component;
 @Aspect//аннотация которая говорит о том что данный класс является аспектом
 public class LoggingAndSecurityAspect {
 
+    @Pointcut("execution(* aop.UniLibrary.*(..))")
+    private void allMethodsFromUniLibrary() {
+    }
+
+    @Pointcut("execution(public void aop.UniLibrary.returnMagazine())")
+    private void returnMagazineFromUniLibrary() {
+    }
+
+    @Pointcut("allMethodsFromUniLibrary() && !returnMagazineFromUniLibrary()")
+    private void allMethodsExceptReturnMagazineFromUniLibrary() {
+    }
+
+    //-------------------------------------------------------------
+    @Pointcut("execution(* aop.UniLibrary.get*())")
+    private void allGetMethodsFromUniLibrary() {
+    }
+
+    @Pointcut("execution(* aop.UniLibrary.return*())")
+    private void allReturnMethodsFromUniLibrary() {
+    }
+
+    @Pointcut("allGetMethodsFromUniLibrary() || allReturnMethodsFromUniLibrary()")//Комбинирование поинткатов с помощью логических операторов
+    private void allGetAndReturnMethodsFromUniLibrary() {
+    }// || && !
+
+    //-------------------------------------------------------------
     @Pointcut("execution(* get*())")//создание ссылки на advices, для быстрого изменения шаблона advices
     private void allGetMethods() {//если сделать public, то ссылка будет доступна и для других advices
+    }
+
+    @Before("allGetMethodsFromUniLibrary()")
+    public void beforeGetLoggingUniLibraryAdvice() {
+        System.out.println("beforeGetLoggingUniLibraryAdvice: logging #1");
+    }
+
+    @Before("allReturnMethodsFromUniLibrary()")
+    public void beforeReturnLoggingUniLibraryAdvice() {
+        System.out.println("beforeReturnLoggingUniLibraryAdvice: logging #2");
+    }
+
+    @Before("allGetAndReturnMethodsFromUniLibrary()")
+    public void beforeGetAndReturnLoggingUniLibraryAdvice() {
+        System.out.println("beforeGetAndReturnLoggingUniLibraryAdvice: logging #3");
+    }
+
+    @Before("allMethodsExceptReturnMagazineFromUniLibrary()")
+    public void beforeAllMethodsExceptReturnMagazineFromUniLibrary() {
+        System.out.println("beforeGetAndReturnLoggingUniLibraryAdvice: logging #10");
     }
 
     //Pointcut - выражения, описывающее где должен применен Advice
