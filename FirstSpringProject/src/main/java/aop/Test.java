@@ -17,7 +17,8 @@ public class Test {
         System.out.println(magazine.getName());
 
         uniLibrary.getMagazine(magazine);
-
+        System.out.println("****************************************************");
+        uniLibrary.addMagazine("Alex", magazine);
         context.close();
     }
 }

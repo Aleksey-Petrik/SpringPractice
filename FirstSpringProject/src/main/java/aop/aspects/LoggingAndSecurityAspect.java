@@ -30,14 +30,11 @@ public class LoggingAndSecurityAspect {
     private void allReturnMethodsFromUniLibrary() {
     }
 
-    @Pointcut("allGetMethodsFromUniLibrary() || allReturnMethodsFromUniLibrary()")//Комбинирование поинткатов с помощью логических операторов
+    @Pointcut("allGetMethodsFromUniLibrary() || allReturnMethodsFromUniLibrary()")
+//Комбинирование поинткатов с помощью логических операторов
     private void allGetAndReturnMethodsFromUniLibrary() {
     }// || && !
-
     //-------------------------------------------------------------
-    @Pointcut("execution(* get*())")//создание ссылки на advices, для быстрого изменения шаблона advices
-    private void allGetMethods() {//если сделать public, то ссылка будет доступна и для других advices
-    }
 
     @Before("allGetMethodsFromUniLibrary()")
     public void beforeGetLoggingUniLibraryAdvice() {
@@ -84,13 +81,4 @@ public class LoggingAndSecurityAspect {
         System.out.println("\nbeforeGetMagazineAdvice : Попытка получить журнал");
     }
 
-    @Before("allGetMethods()")
-    public void beforeGetLoggingAdvice() {
-        System.out.println("beforeGetLoggingAdvice: запись в лог, попытка взять книгу/журнал");
-    }
-
-    @Before("allGetMethods()")
-    public void beforeGetSecurityAdvice() {
-        System.out.println("beforeGetSecurityAdvice: Проверка прав доступа.");
-    }
 }
