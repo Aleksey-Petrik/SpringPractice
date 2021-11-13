@@ -21,6 +21,12 @@ public class UniLibrary extends AbstractLibrary {
         System.out.println("----------------------------");
     }
 
+    public String returnBookName(String name) {
+        System.out.println("Мы вернули книгу в UniLibrary" + name);
+        System.out.println("----------------------------");
+        return name;
+    }
+
     @Override
     public void getMagazine(Magazine magazine) {
         System.out.printf("Мы берем журнал %s из SchoolLibrary", magazine.getName());

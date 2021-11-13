@@ -2,10 +2,7 @@ package aop.aspects;
 
 import aop.Student;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,6 +33,15 @@ public class UniversityLoggingAspect {
     @AfterThrowing(pointcut = "execution(* getStudents())", throwing = "exceptions")//Если необходима информация о том какое исключение было выкинуто
     public void afterThrowingGetStudentsLoggingAdvice(JoinPoint joinPoint, Throwable exceptions) {
         System.out.println("afterThrowingGetStudentsLoggingAdvice: логируем выброс исключения - (" + joinPoint.toString() + ") - " + exceptions);
+    }
+
+    //@After() данная аннотация сработает при нормальном завершении метода и если метод завершится с ошибкой, то есть выкинет исключение
+    //невозможно получить доступ к исключению которое выбросил метод
+    //невозможно получить доступ к возвращаемому методом результату
+    @After("execution(* getStudents())")
+    //public void afterGetStudentsLoggingAdvice(JoinPoint joinPoint) {
+    public void afterGetStudentsLoggingAdvice() {
+        System.out.println("afterGetStudentsLoggingAdvice: логируем нормальное окончание работы метода или выброс исключения.");
     }
 
 }
