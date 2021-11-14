@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect//аннотация которая говорит о том что данный класс является аспектом
+@Aspect//аннотация, которая говорит о том что данный класс является аспектом
 public class LoggingAndSecurityAspect {
 
     @Pointcut("execution(* aop.UniLibrary.*(..))")

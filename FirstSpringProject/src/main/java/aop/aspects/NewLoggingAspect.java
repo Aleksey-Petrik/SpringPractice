@@ -20,12 +20,18 @@ public class NewLoggingAspect {
         System.out.println("aroundReturnBookLoggingAdvice: в библиотеку пытаются вернуть книгу.");
 
         long begin = System.currentTimeMillis();
-        Object targetMethodResult = proceedingJoinPoint.proceed();
+        Object targetMethodResult = null;
+        try {
+            targetMethodResult = proceedingJoinPoint.proceed();
+        } catch (ArithmeticException e) {
+            System.out.println("aroundReturnBookLoggingAdvice: было поймано исключение " + e);
+            targetMethodResult = "Неизвестное название книги.";
+        }
         long end = System.currentTimeMillis();
 
         System.out.println("aroundReturnBookLoggingAdvice: в библиотеку успешно вернули книгу.");
         System.out.println("aroundReturnBookLoggingAdvice: метод returnBookName выполнил за - " + (end - begin));
-        return null;//targetMethodResult;
+        return targetMethodResult;
     }
 
 }

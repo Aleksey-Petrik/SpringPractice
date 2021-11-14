@@ -22,6 +22,7 @@ public class UniLibrary extends AbstractLibrary {
     }
 
     public String returnBookName(String name) {
+        double result = 10 / 0; //выкидываем исключение для аннотации Around
         System.out.println("Мы вернули книгу в UniLibrary" + name);
         System.out.println("----------------------------");
         return name;
