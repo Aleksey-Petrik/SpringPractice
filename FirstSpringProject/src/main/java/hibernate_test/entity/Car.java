@@ -1,14 +1,12 @@
 package hibernate_test.entity;
 //Аннотации JPA, правила, а hibernate реализация этих правил
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity//говорит о том что у нас отображение с БД
 @Table(name="cars")//класс имеет связь с указанной таблицей
 public class Car {
     @Id//primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Описывает стратегию по генерации значения для столбца ID primary key
     @Column(name="car_id")//связь столбца из БД с полем класса
     private int id;
     @Column(name="car_model")
@@ -21,6 +19,11 @@ public class Car {
 
     public Car(int id, String model, String description) {
         this.id = id;
+        this.model = model;
+        this.description = description;
+    }
+
+    public Car(String model, String description) {
         this.model = model;
         this.description = description;
     }

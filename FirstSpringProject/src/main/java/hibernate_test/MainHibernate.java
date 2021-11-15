@@ -14,7 +14,8 @@ public class MainHibernate {
         try {
             //factory можем переиспользовать
             Session session = factory.getCurrentSession();//создание сессии для работы с БД, только для одного действия
-            Car car = new Car(3, "VOLVO Q7", "cool car");
+            //Car car = new Car(8, "VOLVO Q7", "cool car");
+            Car car = new Car("VOLVO Q7", "cool car");
             session.beginTransaction();//открытие транзакции, которую необходимо закрыть, принять либо откатить изменения
             session.save(car);//добавление данных insert into cars (car_description, car_model, car_id) values (?, ?, ?)
             session.getTransaction().commit();//сохранить результат действия запроса в транзакции
