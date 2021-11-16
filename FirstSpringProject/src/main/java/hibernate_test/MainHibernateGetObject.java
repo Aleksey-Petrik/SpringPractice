@@ -5,12 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class MainHibernate {
+public class MainHibernateGetObject {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")//начитывает конфигурацию для работы с БД
                 .addAnnotatedClass(Car.class)//читает аннотации
                 .buildSessionFactory();//создает объект
-
         try {
             //factory можем переиспользовать
             Session session = factory.getCurrentSession();//создание сессии для работы с БД, только для одного действия
@@ -21,9 +20,16 @@ public class MainHibernate {
             session.getTransaction().commit();//сохранить результат действия запроса в транзакции
             //session.getTransaction().rollback();//отменить изменения
             System.out.println(car);
+
+            //Взять запись из БД и поместить в объект
+            int carId = 4;
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Car carDB = session.get(Car.class, carId);
+            session.getTransaction().commit();
+            System.out.println(carDB);
         } finally {
             factory.close();//закрытие фабрики сессий, при любом исходе так как finally
         }
     }
-    
 }
