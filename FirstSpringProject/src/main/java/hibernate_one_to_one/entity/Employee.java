@@ -1,4 +1,4 @@
-package hibernate_work_DB.entity;
+package hibernate_one_to_one.entity;
 
 
 import javax.persistence.*;

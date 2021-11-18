@@ -1,4 +1,4 @@
-package hibernate_work_DB.entity;
+package hibernate_one_to_one.entity;
 
 import javax.persistence.*;
 
@@ -15,6 +15,10 @@ public class Detail {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+    @OneToOne(mappedBy = "employeeDetail", //Говорим hibernate то данная таблица имеет связь и указываем поле по которому эта связь существует
+            cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+            //cascade = CascadeType.ALL)
+    private Employee employee;
 
     public Detail() {
     }
@@ -55,6 +59,14 @@ public class Detail {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

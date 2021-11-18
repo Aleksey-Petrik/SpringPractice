@@ -1,4 +1,4 @@
-package hibernate_test.entity;
+package hibernate_practice_query.entity;
 //Аннотации JPA, правила, а hibernate реализация этих правил
 import javax.persistence.*;
 
