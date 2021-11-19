@@ -1,7 +1,7 @@
-package hibernate_one_to_many_bi;
+package hibernate_one_to_many_uni;
 
-import hibernate_one_to_many_bi.entity.Department;
-import hibernate_one_to_many_bi.entity.Employee;
+import hibernate_one_to_many_uni.entity.Department;
+import hibernate_one_to_many_uni.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,19 +19,17 @@ public class MainHibernateQuery {
             session = factory.getCurrentSession();//создание сессии для работы с БД, только для одного действия
             session.beginTransaction();//открытие транзакции, которую необходимо закрыть, принять либо откатить изменения
             /*
-            Department department = new Department("SALES", 1000.00, 3000.00);
-            Employee employee = new Employee("Alena", "Ivanov", 1500.00);
-            Employee employee2 = new Employee("Vlada", "Petrov", 2500.00);
-            Employee employee3 = new Employee("Vitamin", "Petrov", 2500.00);
+            Department department = new Department("HR", 500.00, 1500.00);
+            Employee employee = new Employee("Anton", "Ivanov", 1500.00);
+            Employee employee2 = new Employee("Vladimir", "Suvorov", 2500.00);
             department.addEmployeeTODepartment(employee);
             department.addEmployeeTODepartment(employee2);
-            department.addEmployeeTODepartment(employee3);
+
             session.save(department);
              */
 
-            Department department = session.get(Department.class, 5);
-            System.out.println("Department - " + department);
-            System.out.println("Employees : ");
+
+            Department department = session.get(Department.class, 2);
             department.getEmployees().forEach(System.out::println);
 
             session.getTransaction().commit();

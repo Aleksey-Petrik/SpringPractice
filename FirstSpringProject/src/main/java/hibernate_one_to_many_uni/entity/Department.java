@@ -1,4 +1,4 @@
-package hibernate_one_to_many_bi.entity;
+package hibernate_one_to_many_uni.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,10 +18,8 @@ public class Department {
     @Column(name = "min_salary")
     private double minSalary;
     //@OneToMany(cascade = CascadeType.ALL
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "department",
-            fetch = FetchType.LAZY)//EAGER - подгружает сразу данные из подчиненных таблиц, LAZY - при обращении
-    // {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, mappedBy = "department")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
     private List<Employee> employees;
 
     public Department() {
@@ -77,7 +75,6 @@ public class Department {
         if (employees == null) {
             employees = new ArrayList<>();
         }
-        employee.setDepartment(this);
         employees.add(employee);
     }
 
