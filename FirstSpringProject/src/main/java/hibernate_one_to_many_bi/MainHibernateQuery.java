@@ -1,7 +1,7 @@
-package hibernate_one_to_many;
+package hibernate_one_to_many_bi;
 
-import hibernate_one_to_many.entity.Department;
-import hibernate_one_to_many.entity.Employee;
+import hibernate_one_to_many_bi.entity.Department;
+import hibernate_one_to_many_bi.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
