@@ -14,7 +14,7 @@ public class Hobby {
     private int id;
     @Column(name = "name")
     private String name;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "children_hobby",
             joinColumns = @JoinColumn(name = "hobby_id"),
             inverseJoinColumns = @JoinColumn(name = "children_id")
@@ -49,6 +49,10 @@ public class Hobby {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Children> getChildes() {
+        return childes;
     }
 
     @Override

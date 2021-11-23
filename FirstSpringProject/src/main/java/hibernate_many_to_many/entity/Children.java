@@ -17,7 +17,7 @@ public class Children {
     @Column(name = "age")
     private int age;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "children_hobby",
             joinColumns = @JoinColumn(name = "children_id"),//Прописываем поле с помощью которого происходит связь таблиц children и children_hobby
             inverseJoinColumns = @JoinColumn(name = "hobby_id")//Прописываем поле с помощью которого происходит связь таблиц children и hobby
@@ -61,6 +61,10 @@ public class Children {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
     }
 
     @Override
