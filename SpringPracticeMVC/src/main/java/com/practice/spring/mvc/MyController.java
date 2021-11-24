@@ -2,9 +2,12 @@ package com.practice.spring.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 //@RequestMapping("/employee") контроллер маппинг
@@ -47,7 +50,11 @@ public class MyController {
     }
     */
     @RequestMapping("/showDetails")
-    public String showEmpDetails(@ModelAttribute("employee") Employee employee) {
+    //@Valid аннотация для проверки введенных данных объекта employee, результат проверки помещается в BindingResult(должен идти после валидации данных)
+    public String showEmpDetails(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return "ask-emp-details-view";
+        }
         return "show-emp-details-view";
     }
 }
