@@ -14,15 +14,26 @@ import java.util.List;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 
-    @Autowired//так как бин прописан в конфиг файле, спринг аннотация добавит объект в переменную
+    @Autowired//так как бин прописан в конфиг файле, спринг аннотация добавит объект в поле класса
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional//аннотация при которой спринг берет на себя открытие и закрытие транзакций
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         Query<Employee> queryEmployees = session.createQuery("FROM Employee", Employee.class);
-        List<Employee> employees = queryEmployees.getResultList();
-        return employees;
+        return queryEmployees.getResultList();
     }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(employee);
+    }
+
+    @Override
+    public Employee getEmployee(int employeeId) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Employee.class, employeeId);
+    }
+
 }

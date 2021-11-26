@@ -21,13 +21,20 @@
             <th>Salary</th>
         </tr>
         <c:forEach var="employee" items="${employees}">
+            <!--формируем ссылку с параметром id работника-->
+            <c:url var="updateButton" value="/updateInfo">
+                <c:param name="empId" value="${employee.id}"/>
+            </c:url>
             <tr>
-                <th>${employee.name}</th>
-                <th>${employee.surName}</th>
-                <th>${employee.department}</th>
-                <th>${employee.salary}</th>
+                <td>${employee.name}</td>
+                <td>${employee.surName}</td>
+                <td>${employee.department}</td>
+                <td>${employee.salary}</td>
+                <td><input type="button" value="Update" id="${employee.id}" onclick="window.location.href = '${updateButton}'"/></td>
+                <td><input type="button" value="Delete" onclick="window.location.href = ''"/></td>
             </tr>
         </c:forEach>
     </table>
+    <input type="button" value="Add" onclick="window.location.href = 'addNewEmployee'"/>
 </body>
 </html>
