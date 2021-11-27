@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 //Вспомогательный слой для работы с БД, DAO
 import java.util.List;
@@ -34,6 +33,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public Employee getEmployee(int employeeId) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Employee.class, employeeId);
+    }
+
+    @Override
+    public void deleteEmployee(int employeeId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("DELETE FROM Employee WHERE id = :employeeId");//:employeeId вместо данной приписки будет подставленное значение
+        query.setParameter("employeeId", employeeId);
+        query.executeUpdate();
     }
 
 }
