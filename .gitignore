@@ -7,3 +7,5 @@ log
 */lib
 */.DS_Store
 */*.jar
+.gradle
+gradle
