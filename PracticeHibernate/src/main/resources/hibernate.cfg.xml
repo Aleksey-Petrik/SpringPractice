@@ -11,6 +11,8 @@
     <property name="connection.password">15995169</property>
     <property name="dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
     <property name="show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.highlight_sql">true</property>
     <mapping class="com.practice.hibernate.entity.User"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

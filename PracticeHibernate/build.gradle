@@ -18,9 +18,14 @@ tasks.withType(JavaCompile) {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    //Hibernate
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.6.1.Final'
+    //JDBC
     implementation 'org.postgresql:postgresql:42.3.1'
-
+    //Logging
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+    //Lombok
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
