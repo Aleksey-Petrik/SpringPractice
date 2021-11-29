@@ -14,7 +14,7 @@
 </head>
 <body>
     <h2>Your name or message?</h2>
-    <form:form action="showDetails" modelAttribute="employee"><%--modelAttribute задается обькт поля которого будут связаны с текстовыми полями формы--%>
+    <form:form action="showDetails" modelAttribute="employee" method="get"><%--modelAttribute задается обькт поля которого будут связаны с текстовыми полями формы--%>
         First name <form:input path="firstName"/><%--поля ввода текстовой информации--%>
         <form:errors path="firstName"/>
         <br><br>
