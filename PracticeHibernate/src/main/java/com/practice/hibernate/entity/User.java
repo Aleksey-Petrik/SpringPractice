@@ -25,4 +25,9 @@ public class User {
     //@Basic
     @Column(name = "email", nullable = false, length = -1)
     private String email;
+
+    public User(String userName, String email) {
+        this.userName = userName;
+        this.email = email;
+    }
 }
