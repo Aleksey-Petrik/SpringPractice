@@ -17,6 +17,7 @@
     <mapping class="com.practice.hibernate.entity.User"/>
     <mapping class="com.practice.hibernate.entity.Category"/>
     <mapping class="com.practice.hibernate.entity.Priority"/>
+    <mapping class="com.practice.hibernate.entity.Activity"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>

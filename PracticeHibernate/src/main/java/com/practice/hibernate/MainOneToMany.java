@@ -19,6 +19,8 @@ public class MainOneToMany {
         user.getCategories().forEach(log::info);
         user.getPriorities().forEach(log::info);
 
+        log.info(user.getActivity());
+
         session.getTransaction().commit();
         session.close();
         HibernateUtil.close();
