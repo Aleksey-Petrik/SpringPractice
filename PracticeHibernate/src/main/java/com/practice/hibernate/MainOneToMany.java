@@ -20,6 +20,9 @@ public class MainOneToMany {
         user.getPriorities().forEach(log::info);
 
         log.info(user.getActivity());
+        log.info(user.getStat());
+
+        user.getRoles().forEach(log::info);
 
         session.getTransaction().commit();
         session.close();

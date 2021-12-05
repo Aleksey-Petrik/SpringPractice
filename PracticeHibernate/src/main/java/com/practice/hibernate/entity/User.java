@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_data", schema = "todolist", catalog = "postgres")
@@ -33,6 +34,19 @@ public class User {
     private List<Priority> priorities;
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Activity activity;
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private Stat stat;
+
+    //Собираем данные из таблицы role_data через вспомогательную таблицу,
+    // так как пользователь может иметь несколько ролей
+    // User    Role
+    //     \  /
+    //   user_role
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",//указываем таблицу посредник, Entity для нее нет
+            joinColumns = @JoinColumn(name = "user_id"), //связываем user_role с текущей таблицей по полю user_id
+            inverseJoinColumns = @JoinColumn(name = "role_id")) //role_id указывает на связь с Entity Role
+    private Set<Role> roles;
 
     public User(String userName, String email) {
         this.userName = userName;

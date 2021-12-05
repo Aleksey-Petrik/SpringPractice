@@ -17,10 +17,10 @@ public class Activity {
     private long id;
     @Column(name = "uuid")
     private String uuid;
-    @Column(name = "activated")
+    @Column(name = "activated", updatable = false)//данное поле вычисляется автоматически в триггерах базы данных, поэтому обновление не нужно
     private int activated;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 }

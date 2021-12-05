@@ -14,10 +14,14 @@
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.highlight_sql">true</property>
     <property name="hibernate.use_sql_comments">true</property>
+    <property name="hibernate.default_schema">todolist</property>
+    <property name="hibernate.default_catalog">postgres</property>
     <mapping class="com.practice.hibernate.entity.User"/>
     <mapping class="com.practice.hibernate.entity.Category"/>
     <mapping class="com.practice.hibernate.entity.Priority"/>
     <mapping class="com.practice.hibernate.entity.Activity"/>
+    <mapping class="com.practice.hibernate.entity.Stat"/>
+    <mapping class="com.practice.hibernate.entity.Role"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
