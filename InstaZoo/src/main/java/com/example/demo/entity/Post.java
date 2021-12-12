@@ -14,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
+@ToString(includeFieldNames = false, of = {"id", "title", "caption", "location", "likes"})
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

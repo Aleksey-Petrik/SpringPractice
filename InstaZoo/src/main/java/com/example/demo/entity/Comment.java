@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Setter
 @Getter
+@ToString(includeFieldNames = false, of = {"id", "username", "userId"})
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

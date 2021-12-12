@@ -15,7 +15,7 @@ import java.util.*;
 @AllArgsConstructor
 @Setter
 @Getter
-//@ToString(includeFieldNames = false, of = {})
+@ToString(includeFieldNames = false, of = {"id", "name", "username", "lastname", "email"})
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
