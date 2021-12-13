@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- id - идентификатор бина, class - класс для бина -->
+    <bean id="myCat"
+          class="com.practice.spring.ioc.entity.Cat"/>
+
+    <bean id="myDog"
+          class="com.practice.spring.ioc.entity.Dog"/>
+
+    <!-- Создание DI, помещаем бин myCat в бин myPerson с помощью конструктора
+            <constructor-arg ref="myCat"/> - создание зависимости с помощью конструктора, constructor-arg - передаем аргумент в конструктор
+
+            <property name="secondPet" ref="myDog"/> - внедрение зависимости с помощью setter-a, name="указываем имя без set", ref="класс зависимости"
+    -->
+    <bean id="myPerson" class="com.practice.spring.ioc.entity.Person">
+        <!-- DI конструктор       -->
+        <constructor-arg ref="myCat"/>
+        <!-- DI setter -->
+        <property name="secondPet" ref="myDog"/>
+    </bean>
+
+</beans>
