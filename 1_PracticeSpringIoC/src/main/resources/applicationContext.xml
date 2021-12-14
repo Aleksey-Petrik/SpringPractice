@@ -7,6 +7,11 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- Указываеи properties файл из которого мы будем внедрять значения-->
+    <!-- после чего в конфигурации в полях value указываем "${параметр}" параметры из файла properties-->
+    <!-- value="${person.name}" -->
+    <context:property-placeholder location="classpath:myApp.properties"/>
+
     <!-- id - идентификатор бина, class - класс для бина -->
     <bean id="myCat"
           class="com.practice.spring.ioc.entity.Cat"/>
@@ -18,12 +23,19 @@
             <constructor-arg ref="myCat"/> - создание зависимости с помощью конструктора, constructor-arg - передаем аргумент в конструктор
 
             <property name="secondPet" ref="myDog"/> - внедрение зависимости с помощью setter-a, name="указываем имя без set", ref="класс зависимости"
+
+            <property name="name" value="Aleksey"/> - заполняем поля с помощью сеттера, внедрение значений
     -->
     <bean id="myPerson" class="com.practice.spring.ioc.entity.Person">
         <!-- DI конструктор       -->
         <constructor-arg ref="myCat"/>
+
         <!-- DI setter -->
         <property name="secondPet" ref="myDog"/>
+
+        <!-- Заполнение полей класса с помощью сеттеров -->
+        <property name="name" value="${person.name}"/>
+        <property name="age" value="${person.age}"/>
     </bean>
 
 </beans>

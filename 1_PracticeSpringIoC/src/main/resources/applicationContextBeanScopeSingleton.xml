@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- id - идентификатор бина, class - класс для бина -->
+    <!-- scope="singleton По умолчению спринг создает объект единного экземпляра - singleton то есть при каждом
+    обращении к контейнеру биновб спринг будет отдовать один и тот же объект
+    -->
+    <bean id="myDog"
+          class="com.practice.spring.ioc.entity.Dog" scope="singleton"/>
+
+</beans>
