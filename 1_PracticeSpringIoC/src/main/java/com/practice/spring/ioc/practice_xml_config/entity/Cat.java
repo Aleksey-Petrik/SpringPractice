@@ -1,4 +1,4 @@
-package com.practice.spring.ioc.entity;
+package com.practice.spring.ioc.practice_xml_config.entity;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

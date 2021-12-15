@@ -12,6 +12,6 @@
     мы обращаемся к спринг контейнеру
     -->
     <bean id="myDog"
-          class="com.practice.spring.ioc.entity.Dog" scope="prototype"/>
+          class="com.practice.spring.ioc.practice_xml_config.entity.Dog" scope="prototype"/>
 
 </beans>

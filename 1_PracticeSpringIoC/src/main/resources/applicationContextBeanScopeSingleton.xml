@@ -12,6 +12,6 @@
     обращении к контейнеру биновб спринг будет отдовать один и тот же объект
     -->
     <bean id="myDog"
-          class="com.practice.spring.ioc.entity.Dog" scope="singleton"/>
+          class="com.practice.spring.ioc.practice_xml_config.entity.Dog" scope="singleton"/>
 
 </beans>

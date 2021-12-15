@@ -1,4 +1,4 @@
-package com.practice.spring.ioc.entity;
+package com.practice.spring.ioc.practice_xml_config.entity;
 
 public class Dog implements Pet {
 

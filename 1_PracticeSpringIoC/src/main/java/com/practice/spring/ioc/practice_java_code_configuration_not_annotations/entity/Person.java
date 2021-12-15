@@ -1,9 +1,13 @@
-package com.practice.spring.ioc.entity;
+package com.practice.spring.ioc.practice_java_code_configuration_not_annotations.entity;
+
+import org.springframework.beans.factory.annotation.Value;
 
 public class Person {
-    private final Pet pet;
+    private Pet pet;
     private Pet secondPet;
+    @Value("${person.name}")//значение берется из myApp.properties
     private String name;
+    @Value("${person.age}")//значение берется из myApp.properties
     private int age;
 
     public Person(Pet pet) {
@@ -33,8 +37,12 @@ public class Person {
 
     public void callYouPet() {
         System.out.println("Hello, my's lovelies pets!");
-        pet.say();
-        secondPet.say();
+        if (pet != null) {
+            pet.say();
+        }
+        if (secondPet != null) {
+            secondPet.say();
+        }
     }
 
 }

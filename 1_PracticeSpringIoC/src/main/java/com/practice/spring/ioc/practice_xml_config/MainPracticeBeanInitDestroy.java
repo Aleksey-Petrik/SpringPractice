@@ -1,7 +1,7 @@
-package com.practice.spring.ioc;
+package com.practice.spring.ioc.practice_xml_config;
 
-import com.practice.spring.ioc.entity.Cat;
-import com.practice.spring.ioc.entity.Dog;
+import com.practice.spring.ioc.practice_xml_config.entity.Cat;
+import com.practice.spring.ioc.practice_xml_config.entity.Dog;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainPracticeBeanInitDestroy {

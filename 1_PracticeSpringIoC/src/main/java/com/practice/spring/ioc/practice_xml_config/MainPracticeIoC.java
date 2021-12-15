@@ -1,6 +1,6 @@
-package com.practice.spring.ioc;
+package com.practice.spring.ioc.practice_xml_config;
 
-import com.practice.spring.ioc.entity.Pet;
+import com.practice.spring.ioc.practice_xml_config.entity.Pet;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**

@@ -12,13 +12,13 @@
     мы обращаемся к спринг контейнеру
     -->
     <bean id="myDog"
-          class="com.practice.spring.ioc.entity.Dog"
+          class="com.practice.spring.ioc.practice_xml_config.entity.Dog"
           init-method="init"
           destroy-method="destroy"
     />
 
     <bean id = "myCat"
-          class="com.practice.spring.ioc.entity.Cat"
+          class="com.practice.spring.ioc.practice_xml_config.entity.Cat"
     />
 
 </beans>

@@ -1,6 +1,6 @@
-package com.practice.spring.ioc;
+package com.practice.spring.ioc.practice_xml_config;
 
-import com.practice.spring.ioc.entity.Person;
+import com.practice.spring.ioc.practice_xml_config.entity.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
