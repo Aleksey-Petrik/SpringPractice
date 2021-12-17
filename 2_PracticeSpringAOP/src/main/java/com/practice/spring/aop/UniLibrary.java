@@ -18,7 +18,7 @@ public class UniLibrary extends AbstractLibrary {
         System.out.println("Возвращаем книгу в UniLibrary");
     }
 
-    public void addBook() {
+    public void addBook(String author, int year) {
         System.out.println("Добавляем книгу в UniLibrary");
     }
 

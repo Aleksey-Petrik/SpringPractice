@@ -1,5 +1,6 @@
 package com.practice.spring.aop.aspects;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -37,5 +38,14 @@ public class LoggingAspect extends AbstractPointcuts {
     @Before("com.practice.spring.aop.aspects.AbstractPointcuts.allGetAndReturnMethodsFromUniLibrary()")
     public void beforeGetAndReturnLoggingAdvice() {
         logger.info("beforeGetLoggingAdvice: writing Log #3");
+    }
+
+    /*
+    * С помощью аргумента JoinPoint joinPoint можем получить информацию по отслеживаемому методу и его параметрам
+    * */
+    @Before("allAddMethodsFromUniLibrary()")
+    public void beforeAddLoggingAdvice(JoinPoint joinPoint){
+        Object[] objects = joinPoint.getArgs();
+        logger.info("beforeAddLoggingAdvice: попытка добавить книгу {} {}", objects, joinPoint.getSignature().getName());
     }
 }

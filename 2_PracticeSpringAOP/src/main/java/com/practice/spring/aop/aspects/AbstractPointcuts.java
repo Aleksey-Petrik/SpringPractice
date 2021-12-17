@@ -30,4 +30,8 @@ public abstract class AbstractPointcuts {
     @Pointcut("allGetMethodsFromUniLibrary() || allReturnMethodsFromUniLibrary()")
     public void allGetAndReturnMethodsFromUniLibrary() {
     }
+
+    @Pointcut("execution(* com.practice.spring.aop.UniLibrary.add*(..))")
+    public void allAddMethodsFromUniLibrary() {
+    }
 }

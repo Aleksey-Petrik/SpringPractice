@@ -24,6 +24,8 @@ public class MainAOP {
         uniLibrary.returnBook();
         uniLibrary.getMagazine();
 
+        uniLibrary.addBook("Vermont", 1812);
+
         SchoolLibrary schoolLibrary = context.getBean("schoolLibrary", SchoolLibrary.class);
         schoolLibrary.getBook();
 
