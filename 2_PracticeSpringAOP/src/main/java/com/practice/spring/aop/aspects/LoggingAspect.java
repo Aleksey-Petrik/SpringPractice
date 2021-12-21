@@ -41,7 +41,7 @@ public class LoggingAspect extends AbstractPointcuts {
     }
 
     /*
-    * С помощью аргумента JoinPoint joinPoint можем получить информацию по отслеживаемому методу и его параметрам
+    * С помощью аргумента JoinPoint можем получить информацию по отслеживаемому методу и его параметрам
     * */
     @Before("allAddMethodsFromUniLibrary()")
     public void beforeAddLoggingAdvice(JoinPoint joinPoint){
