@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Query;
+import java.util.List;
 
 @Service
 public class ServiceHibernate {
@@ -36,4 +37,27 @@ public class ServiceHibernate {
         session.getTransaction().commit();
     }
 
+    public void deleteEmployeesRange(long startId, long endId, Session session) {
+        session.getTransaction().begin();
+        Query query = session.createQuery("DELETE FROM Employee WHERE id >= :startId AND id <= :endId");
+        query.setParameter("startId", startId).setParameter("endId", endId).executeUpdate();
+        session.getTransaction().commit();
+    }
+
+    public Employee getEmployee(Session session, long employeeId) {
+        return session.get(Employee.class, employeeId);
+    }
+
+    public void addEmployeesList(List<Employee> employees, Session session) {
+        session.getTransaction().begin();
+        //todo do not work method
+/*        for (Employee employee : employees) {
+            Query query = session.createQuery("INSERT INTO Employee (name, surname, department, salary) SELECT :name, :surname, :department, :salary FROM employee");
+            query.setParameter("name", employee.getName())
+                    .setParameter("surname", employee.getSurname())
+                    .setParameter("department", employee.getDepartment())
+                    .setParameter("salary", employee.getSalary());
+        }*/
+        session.getTransaction().commit();
+    }
 }
