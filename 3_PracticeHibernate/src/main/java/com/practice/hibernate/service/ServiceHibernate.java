@@ -49,7 +49,6 @@ public class ServiceHibernate {
     }
 
     public void addEmployeesList(List<Employee> employees, Session session) {
-        session.getTransaction().begin();
         employees.forEach(session::save);
 /*        employees.stream().iterator().forEachRemaining(session::save);  */
         //todo do not work method
@@ -60,6 +59,5 @@ public class ServiceHibernate {
                     .setParameter("department", employee.getDepartment())
                     .setParameter("salary", employee.getSalary());
         }*/
-        session.getTransaction().commit();
     }
 }

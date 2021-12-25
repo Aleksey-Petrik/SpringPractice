@@ -11,6 +11,8 @@ import org.aspectj.lang.annotation.Before;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Aspect
 @Component
 @Log4j2
@@ -48,6 +50,17 @@ public class TestAspect {
         log.info("Return object - {}", employee);
         log.info("State transaction - {}", session.isOpen() ? "OPEN" : "CLOSE");
         return employee;
+    }
+
+    @Around("execution(* com.practice.hibernate.service.ServiceHibernate.addEmployeesList(..))")
+    public Object aroundTransactionAspect(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        Object[] args = proceedingJoinPoint.getArgs();
+        Arrays.stream(args).forEach(argument -> log.info("Argument - {}", argument));
+        Session session = (Session) args[1];
+        session.getTransaction().begin();
+        Object resultTargetMethod = proceedingJoinPoint.proceed();
+        session.getTransaction().commit();
+        return resultTargetMethod;
     }
 
 }
