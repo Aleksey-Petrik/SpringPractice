@@ -4,10 +4,7 @@ import com.practice.hibernate.entity.Employee;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +14,14 @@ import java.util.Arrays;
 @Component
 @Log4j2
 public class TestAspect {
+
+    @Pointcut("execution(* com.practice.hibernate.service.ServiceHibernate.addEmployeesList(..))")
+    public void addEmployeesList() {
+    }
+
+    @Pointcut("execution(* com.practice.hibernate.service.ServiceHibernate.deleteEmployee(..))")
+    public void deleteEmployee() {
+    }
 
     @Before("execution(* com.practice.hibernate.service.ServiceHibernate.addEmployee(..))")
     public void beforeAddEmployee(JoinPoint joinPoint) {
@@ -33,7 +38,7 @@ public class TestAspect {
         log.info("Попытка удалить работника {}", joinPoint.getArgs()[0]);
     }
 
-    @After("execution(* com.practice.hibernate.service.ServiceHibernate.deleteEmployee(..))")
+    @AfterReturning("execution(* com.practice.hibernate.service.ServiceHibernate.deleteEmployee(..))")
     public void afterDeleteEmployeeAdvice(JoinPoint joinPoint) {
         log.info("Из базы успешно удален работник {}", joinPoint.getArgs()[0]);
     }
@@ -52,7 +57,7 @@ public class TestAspect {
         return employee;
     }
 
-    @Around("execution(* com.practice.hibernate.service.ServiceHibernate.addEmployeesList(..))")
+    @Around("addEmployeesList() || deleteEmployee()")
     public Object aroundTransactionAspect(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
         Arrays.stream(args).forEach(argument -> log.info("Argument - {}", argument));

@@ -17,9 +17,7 @@ public class ServiceHibernate {
     }
 
     public void deleteEmployee(Employee employee, Session session) {
-        session.beginTransaction();
         session.delete(employee);
-        session.getTransaction().commit();
     }
 
     public Employee deleteEmployeeForId(long idEmployee, Session session) {
@@ -50,7 +48,7 @@ public class ServiceHibernate {
 
     public void addEmployeesList(List<Employee> employees, Session session) {
         employees.forEach(session::save);
-/*        employees.stream().iterator().forEachRemaining(session::save);  */
+        /*        employees.stream().iterator().forEachRemaining(session::save);  */
         //todo do not work method
 /*        for (Employee employee : employees) {
             Query query = session.createQuery("INSERT INTO Employee (name, surname, department, salary) SELECT :name, :surname, :department, :salary FROM employee");
