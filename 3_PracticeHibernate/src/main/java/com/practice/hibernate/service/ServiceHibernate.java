@@ -46,6 +46,14 @@ public class ServiceHibernate {
         return session.get(Employee.class, employeeId);
     }
 
+    public List<Employee> getAllEmployees(Session session) {
+        session.getTransaction().begin();
+        List employees = session.createQuery("FROM Employee")
+                .getResultList();
+        session.getTransaction().commit();
+        return employees;
+    }
+
     public void addEmployeesList(List<Employee> employees, Session session) {
         employees.forEach(session::save);
         /*        employees.stream().iterator().forEachRemaining(session::save);  */
