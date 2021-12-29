@@ -48,10 +48,18 @@ public class ServiceHibernate {
 
     public List<Employee> getAllEmployees(Session session) {
         session.getTransaction().begin();
-        List employees = session.createQuery("FROM Employee")
+        var employees = session.createQuery("FROM Employee")
                 .getResultList();
         session.getTransaction().commit();
         return employees;
+    }
+
+    public void updateSalaryEmployeesRange(long startId, long endId, double newSalary, Session session) {
+        session.getTransaction().begin();
+        Query query = session.createQuery("UPDATE Employee SET salary = :newSalary WHERE id >= :startId AND id <= :endId");
+        query.setParameter("newSalary", newSalary).setParameter("startId", startId).setParameter("endId", endId);
+        query.executeUpdate();
+        session.getTransaction().commit();
     }
 
     public void addEmployeesList(List<Employee> employees, Session session) {

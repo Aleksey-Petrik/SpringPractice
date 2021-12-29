@@ -21,7 +21,18 @@ public class Employee {
     @Column(name = "surname")
     private String surname;
     @Column(name = "department")
-    private String department;
+    private String departmentStr;
     @Column(name = "salary")
     private Double salary;
+
+    @OneToOne(cascade = CascadeType.ALL)//Указываем связь между таблицами ОДИН-К-ОДНОМУ, так же можно указать каскадный тип связи cascade
+    @JoinColumn(name = "details_id")//Указываем поле по которому идет связь, всегда обозначается foreign key
+    private Detail detail;
+
+    /*
+     * Если указать CascadeType.All, то при удалении работника будет удаляться департамент, что не нужно
+     * */
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "department_id")
+    private Department departmentObj;
 }
