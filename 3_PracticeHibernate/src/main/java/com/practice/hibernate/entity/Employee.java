@@ -26,7 +26,7 @@ public class Employee {
     private Double salary;
 
     @OneToOne(cascade = CascadeType.ALL)//Указываем связь между таблицами ОДИН-К-ОДНОМУ, так же можно указать каскадный тип связи cascade
-    @JoinColumn(name = "details_id")//Указываем поле по которому идет связь, всегда обозначается foreign key
+    @JoinColumn(name = "details_id")//Указываем поле по которому идет связь, @JoinColumn для source таблиц с foreign key target таблицы
     private Detail detail;
 
     /*

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,9 +29,12 @@ public class Department {
 
     @OneToMany(mappedBy = "departmentObj",
             cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    private List<Employee> employees = Collections.EMPTY_LIST;
+    private List<Employee> employees;
 
     public void addEmployeeToDepartment(Employee employee) {
+        if (employees == null) {
+            employees = new ArrayList<>();
+        }
         employees.add(employee);
     }
 }
