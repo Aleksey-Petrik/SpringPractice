@@ -22,10 +22,11 @@ public class Position {
     private String name;
 
     /*
-    * Класс Employee ничего не знает про Position, но не наоборот. В данном случае source таблица не имеет foreign key,
-    * а target имеет, но ничего нам не мешает прописать в source таблицу поле связи с target таблицей.
-    * */
-    @OneToMany(cascade = CascadeType.ALL)
+     * Класс Employee ничего не знает про Position, но не наоборот. В данном случае source таблица не имеет foreign key,
+     * а target имеет, но ничего нам не мешает прописать в source таблицу поле связи с target таблицей.
+     * */
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id")
     private List<Employee> employees;
 

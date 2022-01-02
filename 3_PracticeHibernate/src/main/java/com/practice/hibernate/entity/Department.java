@@ -27,8 +27,9 @@ public class Department {
     @Column(name = "min_salary")
     private Double minSalary;
 
-    @OneToMany(mappedBy = "departmentObj",
-            cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "departmentObj",//Ссылка на поле из класса Employee
+            cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}, //Перечень связанных действий
+            fetch = FetchType.LAZY)//Тип загрузки данных ленивая или полная загрузка, по умолчанию стоит Lazy при связи one-to-many
     private List<Employee> employees;
 
     public void addEmployeeToDepartment(Employee employee) {

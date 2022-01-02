@@ -27,7 +27,7 @@ public class Detail {
      * Если бы не было поля employee в данном классе, то связь с таблицей employees была бы Uni, так как employee знает про detail,
      * но в данном случае связь будет считаться BI так как оба объекта знают друг о друге.
      * */
-    @OneToOne(mappedBy = "detail",//Тем самым говорим, что связь между классами имеет и в создаваемом объекте есть ссылка на текущий, указывая поле
+    @OneToOne(mappedBy = "detail",//Тем самым говорим, что связь между классами имеется и в создаваемом объекте есть ссылка на текущий, указывая поле
             cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     private Employee employee;
 }
