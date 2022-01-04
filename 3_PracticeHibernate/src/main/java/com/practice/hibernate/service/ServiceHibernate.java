@@ -1,6 +1,7 @@
 package com.practice.hibernate.service;
 
 import com.practice.hibernate.entity.Employee;
+import com.practice.hibernate.entity.Skill;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,18 @@ public class ServiceHibernate {
         Query query = session.createQuery("UPDATE Employee SET salary = :newSalary WHERE id >= :startId AND id <= :endId");
         query.setParameter("newSalary", newSalary).setParameter("startId", startId).setParameter("endId", endId);
         query.executeUpdate();
+        session.getTransaction().commit();
+    }
+
+    public void addSkill(Session session, Skill skill) {
+        session.getTransaction().begin();
+        session.save(skill);
+        session.getTransaction().commit();
+    }
+
+    public void addListSkills(Session session, List<Skill> skills) {
+        session.getTransaction().begin();
+        skills.forEach(session::save);
         session.getTransaction().commit();
     }
 
