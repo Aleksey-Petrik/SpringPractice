@@ -1,6 +1,7 @@
 package com.practice.hibernate.service;
 
 import com.practice.hibernate.entity.Employee;
+import com.practice.hibernate.entity.Position;
 import com.practice.hibernate.entity.Skill;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
@@ -72,6 +73,18 @@ public class ServiceHibernate {
     public void addListSkills(Session session, List<Skill> skills) {
         session.getTransaction().begin();
         skills.forEach(session::save);
+        session.getTransaction().commit();
+    }
+
+    public void addPosition(Session session, Position position) {
+        session.getTransaction().begin();
+        session.save(position);
+        session.getTransaction().commit();
+    }
+
+    public void addListPositions(Session session, List<Position> positions) {
+        session.getTransaction().begin();
+        positions.forEach(session::save);
         session.getTransaction().commit();
     }
 
