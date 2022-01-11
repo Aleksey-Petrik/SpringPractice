@@ -27,7 +27,7 @@ public class Skill {
      * При связи многие-ко-многим используется третья связующаяя таблица
      * в entity ее не прописываем, а указываем в аннотации JoinTable
      * */
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinTable(name = "employees_skills",
             joinColumns = @JoinColumn(name = "id_skill"),
             inverseJoinColumns = @JoinColumn(name = "id_employee"))
