@@ -13,6 +13,20 @@
         <br><br>
         Salary <form:input path="salary"/>
         <br><br>
+<%--        Department <form:select path="department">
+            <form:option value="Information Technology" label="IT"/>
+            <form:option value="Human Resources" label="HR"/>
+            <form:option value="Sales" label="Sales"/>
+        </form:select>--%>
+        Department <form:select path="department">
+            <form:options items="${employee.departments}"/>
+        </form:select>
+        <br><br>
+        Car Brand?
+<%--        <form:radiobutton path="carBrand" label="BMW"  value="BMW"/>
+        <form:radiobutton path="carBrand" label="LADA" value="LADA"/>
+        <form:radiobutton path="carBrand" label="OPEL" value="OPEL"/>--%>
+        <form:radiobuttons path="carBrand" items="${employee.carBrands}"/>
         <input type="submit" value="OK">
     </form:form>
 <%--

@@ -11,5 +11,6 @@
     <h4>Surname - ${employee.surname}</h4>
     <h4>Salary - ${employee.salary}</h4>
     <h4>Department - ${employee.department}</h4>
+    <h4>Car Brand - ${employee.carBrand}</h4>
 </body>
 </html>
