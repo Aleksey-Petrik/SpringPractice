@@ -1,10 +1,12 @@
-package com.practice.spring.mvc;
+package com.practice.spring.mvc.controller;
 
+import com.practice.spring.mvc.model.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.validation.*;
 
 @Controller
 public class MyController {
@@ -46,7 +48,15 @@ public class MyController {
     }*/
 
     @RequestMapping("/showDetails")
-    public String showEmployeeDetails(@ModelAttribute("employee") Employee employee) {
+    public String showEmployeeDetails(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult) {
+/*        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<Employee>> constraintViolations =
+                validator.validate( employee );*/
+
+        if (bindingResult.hasErrors()) {
+            return "ask-employee-details-view";
+        }
         return "show-employee-details-view";
     }
 }
