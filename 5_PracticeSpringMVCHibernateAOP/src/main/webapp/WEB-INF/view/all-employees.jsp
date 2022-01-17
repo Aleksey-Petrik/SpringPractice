@@ -6,6 +6,7 @@
     <title>Title</title>
 </head>
 <body>
+    <input type="button" value="Add" onclick="window.location.href = 'addEmployee'">
     <table border="1">
         <tr>
             <th>Name</th>
