@@ -36,10 +36,8 @@ public class Employee {
     @Size(min = 2, max = 15)
     @Column(name = "department", length = 20)
     private String department;
-    
-    @DecimalMin("500.00")
-    @DecimalMax("10000.00")
+
     @Column(name = "salary")
-    private BigDecimal salary;
+    private long salary;
 
 }
