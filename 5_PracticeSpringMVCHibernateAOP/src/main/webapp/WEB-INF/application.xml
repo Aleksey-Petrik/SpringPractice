@@ -31,7 +31,8 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="org.postgresql.Driver"/>
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/spring_hibernate_aop_mvc"/>
+        <!--<property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/spring_hibernate_aop_mvc2?UseUnicode=true&amp;characterEncoding=utf-8&amp;charSet='UTF8'"/>-->
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/spring_hibernate_aop_mvc2?useUnicode=yes&amp;characterEncoding=UTF-8"/>
         <property name="user" value="postgres"/>
         <property name="password" value="15995169"/>
     </bean>
@@ -49,6 +50,9 @@
                 <prop key="hibernate.generate_statistics">true</prop>
                 <prop key="hibernate.use_sql_comments">true</prop>
                 <prop key="hibernate.connection.charSet">UTF-8</prop>
+                <!--<property name="hibernate.connection.CharSet">utf8</property>-->
+                <prop key="hibernate.connection.characterEncoding">utf8</prop>
+                <prop key="hibernate.connection.useUnicode">true</prop>
             </props>
         </property>
     </bean>
