@@ -3,18 +3,15 @@ package com.practice.spring.mvc_hibernate_aop.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
 
 @Entity
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Table(name = "employees", catalog = "postgres", schema = "public")
 public class Employee {
     @Id
