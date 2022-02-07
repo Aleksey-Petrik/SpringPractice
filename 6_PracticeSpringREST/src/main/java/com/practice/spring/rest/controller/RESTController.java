@@ -3,6 +3,7 @@ package com.practice.spring.rest.controller;
 import com.practice.spring.rest.entity.Employee;
 import com.practice.spring.rest.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,4 +24,8 @@ public class RESTController {
         return employeeService.getEmployees();
     }
 
+    @GetMapping("/employees/{id}")
+    public Employee getEmployee(@PathVariable long id) {
+        return employeeService.getEmployee(id);
+    }
 }

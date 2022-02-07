@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeDAO repository;
@@ -17,9 +18,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Transactional
     public List<Employee> getEmployees() {
         return repository.getEmployees();
+    }
+
+    @Override
+    public Employee getEmployee(long id) {
+        return repository.getEmployee(id);
     }
 
 }
