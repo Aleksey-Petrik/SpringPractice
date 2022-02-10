@@ -1,6 +1,7 @@
 package com.practice.spring.rest.controller;
 
 import com.practice.spring.rest.entity.Employee;
+import com.practice.spring.rest.exception_handling.NoSuchEmployeeException;
 import com.practice.spring.rest.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,11 @@ public class RESTController {
 
     @GetMapping("/employees/{id}")
     public Employee getEmployee(@PathVariable long id) {
-        return employeeService.getEmployee(id);
+        Employee employee = employeeService.getEmployee(id);
+        if (employee == null) {
+            throw new NoSuchEmployeeException("There is no employee with ID - " + id + " in Database!");
+        }
+        return employee;
     }
+
 }
