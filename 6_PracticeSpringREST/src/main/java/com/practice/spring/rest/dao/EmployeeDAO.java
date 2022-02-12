@@ -9,4 +9,6 @@ public interface EmployeeDAO {
     List<Employee> getEmployees();
 
     Employee getEmployee(long id);
+
+    void addNewEmployee(Employee employee);
 }

@@ -10,4 +10,6 @@ public interface EmployeeService {
 
     Employee getEmployee(long id);
 
+    void addNewEmployee(Employee employee);
+
 }

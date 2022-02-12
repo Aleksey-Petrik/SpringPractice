@@ -3,10 +3,7 @@ package com.practice.spring.rest.controller;
 import com.practice.spring.rest.entity.Employee;
 import com.practice.spring.rest.exception_handling.NoSuchEmployeeException;
 import com.practice.spring.rest.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +27,14 @@ public class RESTController {
         Employee employee = employeeService.getEmployee(id);
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with ID - " + id + " in Database!");
+        }
+        return employee;
+    }
+
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee employee) {
+        if (employee != null) {
+            employeeService.addNewEmployee(employee);
         }
         return employee;
     }
