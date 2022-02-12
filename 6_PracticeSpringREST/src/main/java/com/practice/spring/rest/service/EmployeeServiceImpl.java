@@ -32,4 +32,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         repository.addNewEmployee(employee);
     }
 
+    @Override
+    public void updateEmployee(Employee employee) {
+        repository.updateEmployee(employee);
+    }
+
 }

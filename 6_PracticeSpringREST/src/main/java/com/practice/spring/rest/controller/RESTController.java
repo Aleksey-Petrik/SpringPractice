@@ -39,4 +39,12 @@ public class RESTController {
         return employee;
     }
 
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        if (employee != null) {
+            employeeService.updateEmployee(employee);
+        }
+        return employee;
+    }
+
 }
