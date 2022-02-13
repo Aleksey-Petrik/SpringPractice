@@ -19,8 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public List<Employee> getEmployees() {
         Session session = sessionFactory.getCurrentSession();
-        List<Employee> employees = session.createQuery("FROM Employee ORDER BY id", Employee.class).getResultList();
-        return employees;
+        return session.createQuery("FROM Employee ORDER BY id", Employee.class).getResultList();
     }
 
     @Override
@@ -41,5 +40,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         session.saveOrUpdate(employee);
     }
 
+    @Override
+    public int deleteEmployee(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("DELETE FROM Employee WHERE id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
 
 }
